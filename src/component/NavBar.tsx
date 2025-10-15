@@ -1,47 +1,33 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
-import ThemeToggle from "./ThemeToggle";
-
-
+import React from "react";
+import medium from "/medium.svg";
+import twitter from "/twitter.svg";
+import facebook from "/facebook.svg";
 
 const Navbar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
-    <nav className="bg-white/80 backdrop-blur-md shadow sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-        <Link
-          to="/"
-          className="text-2xl font-heading font-extrabold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 bg-clip-text text-transparent"
-        >
-          
-          <span>Finance</span>
-        </Link>
-
-        <div className="hidden md:flex gap-8 text-gray-700 font-medium">
-         
-          <ThemeToggle />
+    <div className="shadow-sm">
+      <nav className="w-full flex justify-between items-center px-6 py-3 bg-white  max-w-6xl mx-auto">
+        <div className="flex items-center gap-4">
+          <img src={twitter} alt="Twitter" className="w-5 h-5 cursor-pointer" />
+          <img
+            src={facebook}
+            alt="Facebook"
+            className="w-5 h-5 cursor-pointer"
+          />
+          <img src={medium} alt="Medium" className="w-5 h-5 cursor-pointer" />
         </div>
 
-        <button
-          className="md:hidden text-gray-700 focus:outline-none"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-      </div>
+        <div className="flex items-center gap-2">
+          <img src="/logo.svg" alt="Finance Logo" />
+        </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`md:hidden bg-white border-t px-4 py-4 space-y-3 transition-all duration-300 ${
-          isOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0 overflow-hidden"
-        }`}
-      >
-        <ThemeToggle />
-       
-      </div>
-    </nav>
+        <div className="flex flex-col justify-center items-end gap-[4px] cursor-pointer">
+          <span className="block w-7 h-[2px] bg-gray-800 rounded"></span>
+          <span className="block w-5 h-[2px] bg-gray-800 rounded"></span>
+          <span className="block w-3 h-[2px] bg-gray-800 rounded"></span>
+        </div>
+      </nav>
+    </div>
   );
 };
 
